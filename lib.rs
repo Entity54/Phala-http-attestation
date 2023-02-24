@@ -87,11 +87,6 @@ mod phala_http_attestation_gist {
     }
 
     impl PhalaHttpAttestationGist {
-        // #[ink(constructor)]
-        // pub fn new() -> Self {
-        //     Self {}
-        // }
-
         #[ink(constructor)]
         pub fn new() -> Self {
             // Create the attestation helpers
@@ -149,19 +144,6 @@ mod phala_http_attestation_gist {
             }
             // self.linked_users.insert(&data.username, &());
             self.linked_users.insert(&data.username, &data.account_id);
-
-            // // Call the badges contract to issue the NFT
-            // let (contract, id) = self
-            //     .badge_contract_options
-            //     .as_mut()
-            //     .ok_or(Error::BadgeContractNotSetUp)?;
-
-            // let badges: &IssuableRef = contract;
-            // let result = badges.issue(*id, data.account_id);
-
-            // pink::warn!("Badges.issue() result = {:?}", result);
-            // result.or(Err(Error::FailedToIssueBadge))
-
             Ok(())
         }
 
@@ -371,25 +353,5 @@ mod phala_http_attestation_gist {
             let response = http_get!("https://example.com/");
             String::from("All Good")
         }
-
-        // #[ink(message)]
-        // pub fn get_eth_account_length(&self, account: String) -> u8 {
-        //     account.len() as u8
-        // }
-
-        // #[ink(message)]
-        // pub fn get_eth_account_starts_with_zero(&self, account: String) -> bool {
-        //     account.starts_with("\"0x")
-        // }
-
-        // #[ink(message)]
-        // pub fn get_eth_account_string(&self, account: String) -> String {
-        //     let last_elem_num = account.len() - 1;
-        //     account[1..last_elem_num].to_string()
-        //     //EXAMPLE:  0xD0fE316B9f01A3b5fd6790F88C2D53739F80B464
-
-        //     //Requires
-        //     // use crate::alloc::string::ToString; //used at   account[1..last_elem_num].to_string()
-        // }
     }
 }
