@@ -31,7 +31,7 @@ At constructor
 let (generator, verifier) = attestation::create(b"gist-attestation-key");
 
 we create the unique phat contract private key that generates generator and verifier
-The generator will sign data and the verifier will enusre the data submitted is singed by the generator
+The generator will sign data and the verifier will enusre the data submitted is signed by the generator
 
 In
 pub fn get_attestation_generator(&self) -> attestation::Generator {
@@ -58,7 +58,7 @@ The above is used by
             url: String,
         ) -> core::result::Result<attestation::Attestation, Vec<u8>>
 
-to ensure that this is a valid http address referrign to a gist
+to ensure that this is a valid http address refering to a gist
 
 Step 4
 
@@ -70,7 +70,7 @@ Step 5
 
         fn decode_accountid_256(addr: &[u8]) -> Result<AccountId>
 
-is used to decose a hex account to a proper AccountId address
+is used to decode a hex account to a proper AccountId address
 
 Step 6
 
@@ -89,7 +89,7 @@ Feeding the function with the attestation the attestation_verifier decomposes it
 It then proceeds to store the data in the mapping
 
 > NOTE: Although up to this point all works well, when I actually feed at https://phat-cb.phala.network/ or https://phat.phala.network/
-> the function witht the attestation e.g.
+> the function with the attestation e.g.
 
 Out of this
 
@@ -115,8 +115,10 @@ to redeem function I get the error
 
 <br>
 
-Repo Paused as it achieved its target and mkving to more modern examples
+Repo Paused as it achieved its target and moving to more modern examples
 
 > Note 1: A lot of functions were turned into queries so that we can actually see step by step what is going on
 
-> Note 2: There are 2 steps. First http call brings the content which is attested. Then this attestation is submitted to the Phat contract so it is saved on Phala chain storage
+> Note 2: There are 2 steps. First http call brings the content which is attested. Then this attestation is submitted to the Phat contract so it is saved on Phala chain storage.
+> <br>
+> We need the side_VM to execute both steps

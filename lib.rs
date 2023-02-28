@@ -245,7 +245,7 @@ mod phala_http_attestation_gist {
         /// Note: At https://github.com/Phala-Network/oracle-workshop this is just a function. Here we want to see
         /// Try:    https://gist.githubusercontent.com/Entity54/5476bcec0e9263266ad15ec3f9561411/raw/c51066450c5223878b6edfc2d4a3e15d835cd5e9/BE_003.txt
         #[ink(message)]
-        pub fn ang_parse_gist_url(&self, url: String) -> Result<GistUrl> {
+        pub fn my_parse_gist_url(&self, url: String) -> Result<GistUrl> {
             let path = url
                 .strip_prefix("https://gist.githubusercontent.com/")
                 .ok_or(Error::InvalidUrl)?;
@@ -281,7 +281,7 @@ mod phala_http_attestation_gist {
         //we get "Ok": "464inykovjdRPhMhW2zbJ47iA8qYSmPWqKLkaEgH2xc6SQ4c"
         // pub fn extract_claim(&self, body: Vec<u8>) -> Result<Vec<u8>> {
         #[ink(message)]
-        pub fn ang_extract_claim(&self, body: Vec<u8>) -> Result<AccountId> {
+        pub fn my_extract_claim(&self, body: Vec<u8>) -> Result<AccountId> {
             let body = String::from_utf8_lossy(&body);
             let pos = body.find(CLAIM_PREFIX).ok_or(Error::NoClaimFound)?;
             let addr: String = body
@@ -300,7 +300,7 @@ mod phala_http_attestation_gist {
         // If you pass f0f4360fc5dbb8cd7107edf24fc3f3c9ef3914b32585062bfd7aa84e02f8b84e you get "Ok": "464inykovjdRPhMhW2zbJ47iA8qYSmPWqKLkaEgH2xc6SQ4c"
         //For account Mac2 5HWdttFeYE89GQDGNRYspsJouxZ56xwm6bzKxSPtbDjwpQbb with Hex 0xf0f4360fc5dbb8cd7107edf24fc3f3c9ef3914b32585062bfd7aa84e02f8b84e
         #[ink(message)]
-        pub fn ang_decode_accountid_256(&self, addr: Vec<u8>) -> Result<AccountId> {
+        pub fn my_decode_accountid_256(&self, addr: Vec<u8>) -> Result<AccountId> {
             use hex::FromHex;
             if addr.len() != ADDRESS_LEN {
                 return Err(Error::InvalidAddressLength);
